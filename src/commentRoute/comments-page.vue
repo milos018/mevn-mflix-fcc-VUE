@@ -19,7 +19,11 @@ const comments = ref([]);
 const getAllComments = async () => {
   let commentsRes;
   try {
-    const res = await axios.get("http://localhost:5500/comments");
+    const res = await axios.get(
+      import.meta.env.PROD
+        ? "https://mevn-mflix-fcc.herokuapp.com/comments"
+        : "http://localhost:5500/comments"
+    );
     commentsRes = res.data;
     comments.value = commentsRes;
   } catch (error) {
