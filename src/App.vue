@@ -21,8 +21,6 @@ if (JSON.parse(localStorage.getItem("user"))) {
 
 const route = useRoute();
 const shouldShowHeader = computed(() => route.fullPath !== "/auth");
-
-console.log(import.meta.env.PROD);
 </script>
 
 <style>
