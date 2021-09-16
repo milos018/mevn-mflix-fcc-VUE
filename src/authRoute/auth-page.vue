@@ -72,7 +72,7 @@ const router = useRouter();
 
 const getAuth = async () => {
   const url = import.meta.env.PROD
-    ? "https://mevn-mflix-fcc.herokuapp.com/" + mode.value
+    ? "https://mevn-mflix-fcc.herokuapp.com/auth/" + mode.value
     : "http://localhost:5500/auth/" + mode.value;
   try {
     const response = await axios.post(url, {
