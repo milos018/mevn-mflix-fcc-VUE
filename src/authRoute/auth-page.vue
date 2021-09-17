@@ -51,6 +51,15 @@
       >
         {{ mode === "login" ? "Login" : "Signup" }}
       </button>
+      <p
+        v-if="reqError"
+        text="white center"
+        bg=" red-500"
+        p="2"
+        class="rounded-lg"
+      >
+        {{ reqError }}
+      </p>
     </form>
   </section>
 </template>
@@ -69,6 +78,7 @@ const email = ref("");
 const password = ref("");
 
 const router = useRouter();
+const reqError = ref("");
 
 const getAuth = async () => {
   const url = import.meta.env.PROD
@@ -84,8 +94,8 @@ const getAuth = async () => {
 
     updateUser(data);
     router.push("/");
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    reqError.value = err.response.data.error;
   }
 };
 </script>
